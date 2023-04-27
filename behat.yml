@@ -1,0 +1,46 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\MailContext
+        - emuse\BehatHTMLFormatter\Context\ScreenshotContext:
+            screenshotDir: reports/assets/screenshots
+  formatters:
+    html:
+      output_path: features/reports
+  extensions:
+    Drupal\MinkExtension:
+      default_session: selenium2
+      goutte: ~
+      selenium2:
+        browser: "chrome"
+        wd_host: http://selenium:4444/wd/hub
+        capabilities:
+          extra_capabilities:
+            idle-timeout: 50
+      base_url: http://web
+    Drupal\DrupalExtension:
+      #blackbox: ~
+      api_driver: 'drupal'
+      #drush:
+        #alias: 'local'
+      drupal:
+        drupal_root: '/var/www/html/web'
+      region_map:
+        footer: "#footer"
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages-error'
+        success_message_selector: '.messages.messages-status'
+    emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+      name: html
+      renderer: Twig,Behat2
+      file_name: index
+      print_args: true
+      print_outp: true
+      loop_break: true
+
