@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  selenium:
+    container_name: ddev-${DDEV_SITENAME}-selenium
+    image: selenium/standalone-chrome-debug:3.141
+    networks:
+      default:
+        aliases:
+          - web
