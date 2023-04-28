@@ -8,4 +8,4 @@ Feature: Website requirement: Website home page.
   Scenario: check the welcome message at the homepage
     Given I am an anonymous user
     When I go to the homepage
-    Then I should see "Unbestimmter Artikel"
+    Then I should see "You haven’t created any frontpage content yet."
