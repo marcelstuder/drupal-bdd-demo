@@ -19,6 +19,9 @@ When using acceptance testing in Drupal these libraries/packages come into play:
 - [behat UI](https://www.drupal.org/project/behat_ui)
     - Graphical UI for running the tests in Drupal
     - installs behat, mink and behat drupal extension
+- [behat Screenshot extension](https://github.com/drevops/behat-screenshot)
+    - supports creating a screenshot when a test fails
+    - supports creating a screenshot in a scenario step: `Then save screenshot`
 
 ### Example: Installation using behat UI
 
@@ -49,3 +52,32 @@ Note: In this example, the composer commands run outside of the Drupal container
 
 - *ssh* into the container: `ddev ssh`
 - Run the test using the console output (default when using the provided `behat.yml` is the html formatter): `behat --format pretty`
+
+### Enable behat screenshot extension
+
+- [behat Screenshot extension](https://github.com/drevops/behat-screenshot)
+- Install extension: `ddev composer require --dev drevops/behat-screenshot`
+- Edit `behat.yml`:
+    - Add the screenshot context to the default contexts: 
+      ```
+      default:
+        suites:
+            default:
+            contexts:
+                - FeatureContext
+                - DrevOps\BehatScreenshotExtension\Context\ScreenshotContext
+      ```
+    - Add the screenshot extension:
+      ```
+        extensions:
+            DrevOps\BehatScreenshotExtension:
+                dir: '%paths.base%/tests/screenshots'
+                fail: true
+                fail_prefix: 'failed_'
+                purge: true
+      ```
+- Change the `sample.feature` so that it fails (e.g. alter the expected text so that it does not match)
+- *ssh* into the container: `ddev ssh`
+- Run the test using the console output: `behat --format pretty`
+- Close the *ssh* connection: `exit`
+- in the folder `tests/screenshots` (e.g. `my-drupal9-site/tests/screenshots`) you should see a .png file (screenshot of the failing step)
