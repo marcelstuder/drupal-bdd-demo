@@ -55,7 +55,7 @@ Note: In this example, the composer commands run outside of the Drupal container
 
 ### Enable behat screenshot extension
 
-- [behat Screenshot extension](https://github.com/drevops/behat-screenshot)
+- For detailed usage instructions refer to the [behat Screenshot extension repository](https://github.com/drevops/behat-screenshot)
 - Install extension: `ddev composer require --dev drevops/behat-screenshot`
 - Edit `behat.yml`:
     - Add the screenshot context to the default contexts: 
