@@ -4,6 +4,10 @@ This repository documents my first attempt how to run acceptance tests in Drupal
 
 ## Setup in a local DDEV environment
 
+In this scenario the *api driver* is used for testing directly in a Drupal instance running locally on a developer machine using DDEV. 
+
+For different scenarios (e.g. not testing directly in the drupal instance) different drivers are available (see [drivers overview](https://behat-drupal-extension.readthedocs.io/en/stable/drivers.html)) and other configuration steps are needed.
+
 ### Prerequisites
 
 Install a new Drupal instance. You can find detailed instructions in the [quickstart section of the DDEV documentation](https://ddev.readthedocs.io/en/latest/users/quickstart/).
@@ -81,3 +85,16 @@ Note: In this example, the composer commands run outside of the Drupal container
 - Run the test using the console output: `behat --format pretty`
 - Close the *ssh* connection: `exit`
 - in the folder `tests/screenshots` (e.g. `my-drupal9-site/tests/screenshots`) you should see a .png file (screenshot of the failing step)
+
+### Behat UI Configuration settings
+
+The following screenshots show, how to configure *behat UI* in Drupal:
+
+- Settings - part 1 of 4:    
+  ![settings-part-1-of-4](./images/behat-ui-settings-1-of-4.png)
+- Settings - part 2 of 4:    
+  ![settings-part-2-of-4](./images/behat-ui-settings-2-of-4.png)
+- Settings - part 3 of 4:    
+  ![settings-part-3-of-4](./images/behat-ui-settings-3-of-4.png)
+- Settings - part 4 of 4:    
+  ![settings-part-4-of-4](./images/behat-ui-settings-4-of-4.png)
