@@ -52,7 +52,7 @@ Note: In this example, the composer commands run outside of the Drupal container
 - Close the *ssh* connection: `exit`
 - Copy the *sample feature* (`sample.feature`) into the features folder (e.g. `my-drupal9-site/features`)
 
-### Run the test on the shell
+### Run the test in a shell
 
 - *ssh* into the container: `ddev ssh`
 - Run the test using the console output (default when using the provided `behat.yml` is the html formatter): `behat --format pretty`
